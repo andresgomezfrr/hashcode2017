@@ -1,6 +1,7 @@
 require_relative 'entities/endpoint'
 require_relative 'entities/video'
 require_relative 'entities/request'
+require_relative 'formatters/output'
 require 'pry'
 
 if ARGV.count != 1
