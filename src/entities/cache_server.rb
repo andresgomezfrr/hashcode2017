@@ -1,9 +1,10 @@
 class CacheServer
-  attr_accessor :max_size, :videos
+  attr_accessor :id, :max_size, :videos
 
-  def initialize(max_size)
+  def initialize(id, max_size)
+    @id = id
     @max_size = max_size
-    @videos = []
+    @videos = {}
   end
 
   def current_size
