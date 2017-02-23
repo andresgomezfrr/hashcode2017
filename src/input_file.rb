@@ -27,7 +27,7 @@ class InputFile
       caches_connected = endpoint_data[1]
 
       @endpoints << {
-        datacenter_latencity: datacenter_latency,
+        datacenter_latency: datacenter_latency,
         caches: []
       }
 

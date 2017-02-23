@@ -11,6 +11,11 @@ if ARGV.count != 1
   exit
 end
 
+# vars
+videos = []
+endpoints = []
+requests = []
+
 # Parse files and create the instances
 input_file = InputFile.new ARGV[0]
 input_file.parse!
@@ -21,13 +26,20 @@ puts "#{input_file.data[:videos]} videos, " \
      "#{input_file.data[:cache_servers]} caches " \
      "#{input_file.data[:capacity]}MB each"
 
-videos_str = input_file.videos.map { |v| "#{v}MB" }
-puts "Videos: #{videos_str}"
+input_file.videos.each_with_index do |v, i|
+  video = Video.new(i, v)
+  videos << video
+  puts video
+end
 
-input_file.endpoints.each do |e|
-  puts "Endpoint: #{e}"
+input_file.endpoints.each_with_index do |e, i|
+  endpoint = Endpoint.new i, e[:datacenter_latency], e[:caches]
+  endpoints << endpoint
+  puts endpoint
 end
 
 input_file.requests.each do |r|
-  puts "Request: #{r}"
+  request = Request.new videos[r[:video_id].to_i], endpoints[r[:request_id].to_i], r[:requests]
+  requests << request
+  puts request
 end

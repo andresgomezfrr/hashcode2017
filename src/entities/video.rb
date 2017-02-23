@@ -9,4 +9,8 @@ class Video
   def addToCache(cache)
     @cache_servers << cache
   end
+
+  def to_s
+    "Video: ID #{id} #{size}MB"
+  end
 end

@@ -6,4 +6,8 @@ class Request
     @video = video
     @request_number = request_number
   end
+
+  def to_s
+    "Request: Endpoint ID #{endpoint.id} Video ID #{video.id} Requests: #{request_number}"
+  end
 end
