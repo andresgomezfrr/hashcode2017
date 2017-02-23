@@ -1,0 +1,3 @@
+class Endpoint
+  # todo
+end
