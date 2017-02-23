@@ -21,6 +21,9 @@ cache_servers = {}
 input_file = InputFile.new ARGV[0]
 input_file.parse!
 
+puts ARGV[0]
+puts "==============="
+
 puts "#{input_file.data[:videos]} videos, " \
      "#{input_file.data[:endpoints]} endpoints, " \
      "#{input_file.data[:requests]} requests, " \
