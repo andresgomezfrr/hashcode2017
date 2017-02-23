@@ -8,7 +8,11 @@ class CacheServer
   end
 
   def current_size
-    @videos.inject(0) { |sum, v| sum + v.size }
+    sum = 0
+    @videos.each do |k, v|
+      sum += v.size
+    end
+    sum
   end
 
   def free_space
@@ -17,5 +21,13 @@ class CacheServer
 
   def has_capacity_for?(video)
     free_space > video.size
+  end
+
+  def add_video(video)
+    @videos[video.id] = video
+  end
+
+  def to_s
+    "#{id} #{videos.values.map(&:id).join(' ')}"
   end
 end

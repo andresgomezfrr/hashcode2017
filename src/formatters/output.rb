@@ -1,14 +1,13 @@
 class Output
-  @commands = []
+  def self.bulk_file(path, cache_servers)
+    # puts "== Output =="
 
-  def self.add_command(str)
-    @commands << str
-  end
-
-  def self.bulk_file(path)
-    @commands.unshift(@commands.size)
     File.open(path, 'w') do |file|
-      file.write(@commands.join("\n"))
+      used_caches = cache_servers.select { |k, cs| cs.videos.size > 0 }.size
+      file.write("#{used_caches}\n")
+      # puts "#{used_caches}\n"
+      file.write(cache_servers.values.join("\n"))
+      # puts cache_servers.values.join("\n")
     end
   end
 end
