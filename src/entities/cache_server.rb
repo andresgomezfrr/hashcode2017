@@ -1,10 +1,15 @@
 class CacheServer
-  attr_accessor :id, :max_size, :videos
+  attr_accessor :id, :max_size, :videos, :endpoints
 
   def initialize(id, max_size)
     @id = id
     @max_size = max_size
     @videos = {}
+    @endpoints = []
+  end
+
+  def add_endpoint(endpoint)
+    @endpoints << endpoint
   end
 
   def current_size

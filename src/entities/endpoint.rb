@@ -7,7 +7,7 @@ class Endpoint
     @cache_servers = {}
 
     cache_servers.each do |cs|
-      @cache_servers[cs[:cache_id].to_i] = cs[:cache_latency]
+      @cache_servers[cs[:cache_id].to_i] = cs[:cache_latency].to_i
     end
   end
 

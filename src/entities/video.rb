@@ -6,7 +6,7 @@ class Video
     @size = size
   end
 
-  def addToCache(cache)
+  def add_to_cache(cache)
     @cache_servers << cache
   end
 
