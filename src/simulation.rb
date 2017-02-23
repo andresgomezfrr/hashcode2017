@@ -9,3 +9,10 @@ if ARGV.count != 1
   puts 'usage: simulation.rb [file]'
   exit
 end
+
+@videos = []
+@endpoints = []
+@requests = []
+@cache_servers = []
+
+# Parse files and create the instances
