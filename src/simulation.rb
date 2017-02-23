@@ -15,6 +15,7 @@ end
 videos = []
 endpoints = []
 requests = []
+cache_servers = {}
 
 # Parse files and create the instances
 input_file = InputFile.new ARGV[0]
@@ -34,6 +35,13 @@ end
 
 input_file.endpoints.each_with_index do |e, i|
   endpoint = Endpoint.new i, e[:datacenter_latency], e[:caches]
+
+  e[:caches].each do |cache_info|
+    cache_id = cache_info[:cache_id]
+    next unless cache_servers[cache_id].nil?
+    cache_servers[cache_id] = CacheServer.new(cache_id, input_file.data[:capacity])
+  end
+
   endpoints << endpoint
   puts endpoint
 end
